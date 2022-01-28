@@ -1,41 +1,52 @@
 @import "common/foundation/mixins";
 
-$max-width: 600px;
+$max-width: 648px;
 
-.display-search-banner {
-  #main-outlet {
-    padding-top: 0;
+#navigation-bar {
+  width: 100%;
+  li>a {
+    padding: 0 1em;
   }
 }
 
-.search-banner {
-  @if $background-image != "none" {
-    background-image: url($background-image);
-  } @else {
-    background: none;
-  }
-  @if $tile-background_image == "true" {
-    background-size: auto;
-  } @else {
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-}
+.navigation-container .navigations {
+  width: 100%;
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
 
-.custom-search-banner-wrap {
-  box-sizing: border-box;
-  position: relative;
-  padding: 2.5em 0 3em;
-  margin: 1em auto;
+  .category-breadcrumb>li:not(:last-child) {
+    margin-right: 1em;
+  }
+  .category-breadcrumb>li:last-child {
+    margin-right: 0;
+  }
+
+  .navigation-controls>*:not(:last-child) {
+    margin-right: 1em;
+  }
+
+  > div:first-of-type {
+    width: 72.5%;
+    height: 10px;
+    margin-right: 1em;
+  }
+
+  .navigation-controls {
+    width: 50%;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
   @include breakpoint(tablet) {
     padding: 1em 8px 2em;
     margin-top: 0.5em;
   }
 
-  > div {
-    margin: 0 auto;
-    max-width: $max-width;
-  }
+  // > div:first-of-type {
+  //   width: fit-content;
+  //   width: 100%;
+  //   // max-width: $max-width;
+  // }
 
   .search-menu {
     position: relative;
@@ -139,4 +150,12 @@ $max-width: 600px;
   span.keyword {
     color: var(--primary);
   }
+}
+
+.navigation-container .navigations:not(.category) > div:first-of-type {
+  width: 95.4%;
+}
+
+.list-controls .btn:not(:first-child) {
+  margin-left: 0;
 }

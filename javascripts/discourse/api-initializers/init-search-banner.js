@@ -1,18 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
 
 export default apiInitializer("0.8", (api) => {
-  const enableConnectorName = settings.plugin_outlet;
-  const disableConnectorName =
-    enableConnectorName === "above-main-container"
-      ? "below-site-header"
-      : "above-main-container";
-
-  api.registerConnectorClass(disableConnectorName, "search-banner", {
-    shouldRender() {
-      return false;
-    },
-  });
-
   // Simplified version of header search theme component
   const searchMenuWidget = api.container.factoryFor("widget:search-menu");
   const corePanelContents = searchMenuWidget.class.prototype["panelContents"];
