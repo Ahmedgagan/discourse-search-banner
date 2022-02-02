@@ -2,6 +2,10 @@
   {{mount-widget widget="search-widget"}}
   <div class="navigation-controls">
     {{bread-crumbs categories=categories category=category noSubcategories=noSubcategories tag=tag additionalTags=additionalTags}}
+    {{#if (and (not additionalTags) site.mobileView)}}
+      {{!-- nav bar doesn't work with tag intersections --}}
+      {{navigation-bar navItems=navItems filterMode=filterMode category=category}}
+    {{/if}}
     {{#if showCategoryAdmin}}
       {{categories-admin-dropdown
         onChange=(action "selectCategoryAdminDropdownAction")
@@ -84,7 +88,7 @@
 
   </div>
 </div>
-{{#unless additionalTags}}
+{{#if (and (not additionalTags) (not site.mobileView))}}
   {{!-- nav bar doesn't work with tag intersections --}}
   {{navigation-bar navItems=navItems filterMode=filterMode category=category}}
-{{/unless}}
+{{/if}}
